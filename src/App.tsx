@@ -1,10 +1,7 @@
-import DynamicPersonalityLanding from './components/DynamicPersonalityLanding'
-import './App.css'
+import DynamicPersonalityLanding from './components/DynamicPersonalityLanding';
 
 function App() {
-  return (
-    <DynamicPersonalityLanding />
-  )
+    return <DynamicPersonalityLanding />;
 }
 
-export default App
+export default App;
