@@ -1,7 +1,8 @@
-import DynamicPersonalityLanding from './components/DynamicPersonalityLanding';
+import React from 'react';
+import AppRouter from './router/AppRouter';
 
 function App() {
-    return <DynamicPersonalityLanding />;
+    return <AppRouter />;
 }
 
 export default App;

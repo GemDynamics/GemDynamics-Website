@@ -1,1 +1,9 @@
-ai-tasks/sequence_GW1_website_base/001_project_init_and_repo_setup.md - erledigt 
+ai-tasks/sequence_GW1_website_base/001_project_init_and_repo_setup.md - erledigt
+ai-tasks/sequence_GW1_website_base/002_vercel_github_setup.md - erledigt
+ai-tasks/sequence_GW1_website_base/003_setup_main_layout_router_and_config.md - erledigt
+ai-tasks/sequence_GW1_website_base/004_implement_topbar_tab_menu.md - erledigt
+ai-tasks/sequence_GW1_website_base/005_create_landing_auth_pages.md - erledigt
+ai-tasks/sequence_GW1_website_base/006_create_account_pages_structure.md - erledigt
+ai-tasks/sequence_GW1_website_base/007_create_support_page.md - erledigt
+ai-tasks/sequence_GW1_website_base/008_refactor_dynamic_personality_page.md - erledigt
+ai-tasks/sequence_GW1_website_base/009_create_cortex_one_suite_presentation_page.md - erledigt 
