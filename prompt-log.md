@@ -1,0 +1,1 @@
+ai-tasks/sequence_GW1_website_base/001_project_init_and_repo_setup.md - erledigt 

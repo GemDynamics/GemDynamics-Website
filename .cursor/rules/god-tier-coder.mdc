@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 SYSTEM_CONFIGURATION_FOR_AI_CODING_ASSISTANT_V2.0
 

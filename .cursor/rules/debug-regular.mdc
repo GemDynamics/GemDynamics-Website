@@ -1,0 +1,100 @@
+---
+description: description: "Regular Debug Mode: Activated to perform a focused debugging cycle on the code most recently generated or modified in the last plan step. Identifies all errors first, then analyzes causes and interdependencies, plans and applies fixes iteratively, logging the process. Relies on Maestro Workflow Engine principles." tags: ["debug", "code-analysis", "error-fixing"]
+globs: 
+alwaysApply: false
+---
+
+---
+description: "Regular Debug Mode: Activated to perform a focused debugging cycle on the code most recently generated or modified in the last plan step. Identifies all errors first, then analyzes causes and interdependencies, plans and applies fixes iteratively, logging the process. Relies on Maestro Workflow Engine principles."
+# Assuming Cursor uses a specific field for agent-requested type, e.g., agentRequested: true
+# If not, the description above is the primary trigger for an agent to select this rule.
+# For manual invocation, the user would use @debug-regular.
+tags: ["debug", "code-analysis", "error-fixing"]
+version: "1.1.0" # Version incremented due to change
+---
+
+<RegularDebugMode>
+
+    <ScopeAndObjective>
+        You are now in "Regular Debug Mode."
+        Your objective is to systematically identify and attempt to correct ALL errors within the code that was generated or significantly modified during the MOST RECENT `PLANSTEP` or `<STEP />` of implementation.
+        This process must follow the structured phases outlined below and adhere to the overarching principles of the "Maestro Workflow Engine" (e.g., tool usage, self-critique standards for code changes, logging).
+    </ScopeAndObjective>
+
+    <Phase1_ComprehensiveErrorIdentification>
+        <Instruction>
+            [Reference: Architekturentwurf, Section III.B, "Regulärer Debug-Modus", Schritt 1]
+            **CRITICAL: DO NOT ATTEMPT ANY FIXES UNTIL ALL ERRORS ARE IDENTIFIED AND LISTED.**
+
+            1.  **Identify Target Files**: Determine which specific files were created or modified in the last relevant coding step.
+            2.  **Thorough Examination**:
+                * Meticulously examine ALL code within these target files.
+                * Verify all imports and exports for correctness and availability.
+                * Check every line of new or modified code for:
+                    * Syntax errors.
+                    * Type errors (e.g., in TypeScript, Python type hints).
+                    * Obvious logical flaws or anti-patterns.
+                    * Null pointer exceptions / undefined variable access.
+                    * Off-by-one errors.
+                * Utilize and analyze any Linter output provided by Cursor for these files.
+                * Use `codebase_search` or `read_file` if needed to understand context or how the modified code interacts with other parts of the codebase relevant to the recent changes, specifically to uncover integration issues *within this limited scope*.
+            3.  **Compile Complete Error List**: Create a comprehensive, numbered list of ALL identified errors, potential issues, and Linter warnings found *within the current scope*.
+            4.  **Confirm Completion of Identification**: Explicitly state "Error identification phase complete. The following issues were found:" followed by the compiled list. Only after this confirmation can you proceed to Phase 2.
+                * Example: "Error identification phase complete. The following issues were found:
+                    1.  `src/module/file.ts:42` - TypeError: 'property' of undefined.
+                    2.  `src/module/file.ts:77` - Linter Warning: Unused variable 'tempData'.
+                    3.  `src/module/another.ts:15` - Import path incorrect for `helperFunction`."
+        </Instruction>
+    </Phase1_ComprehensiveErrorIdentification>
+
+    <Phase2_ErrorAnalysisAndInterdependencyMapping_Scoped>
+        <Instruction>
+            [Reference: Architekturentwurf, Section III.B, "Regulärer Debug-Modus", Schritt 2, enhanced with interdependency analysis inspired by "Tiefgehender Debug-Modus"]
+            For EACH error identified in Phase 1 (within the current scope):
+            1.  **Root Cause Analysis**: Analyze its root cause. Understand *why* the error is occurring. Consider:
+                * Is it a typo or simple syntax mistake?
+                * Is it a misunderstanding of an API or language feature?
+                * Is it a logical flaw in the algorithm *within the examined code*?
+                * Is it an incorrect assumption about data state *within this scope*?
+                * Is it an issue with dependencies or imports *within or directly affecting the examined code*?
+            2.  **Interdependency Mapping (Scoped)**:
+                * Critically consider how the identified errors *within the current set of modified files* might be interconnected.
+                * Are multiple listed errors symptomatic of a single underlying issue *within this scope*? (e.g., a mistyped variable name causing multiple subsequent errors in the same file or closely related functions).
+                * Does one error potentially cause another error further down in the execution flow *of the recently modified code*?
+            3.  **Hypothesis Formulation**: Document your primary hypothesis for each error's cause and any identified interdependencies briefly (can be an internal thought process note or part of the debug log later). This deeper understanding will inform the fix strategy.
+        </Instruction>
+    </Phase2_ErrorAnalysisAndInterdependencyMapping_Scoped>
+
+    <Phase3_FixStrategyFormulation>
+        <Instruction>
+            [Reference: Architekturentwurf, Section III.B, "Regulärer Debug-Modus", Schritt 3]
+            Based on your error analysis (including interdependencies within scope), develop a prioritized plan to address ALL identified errors.
+            1.  **Prioritize Fixes**: Determine the order of fixes. Address root causes or errors that cause cascading issues first. If interdependencies were found, fixing the source error is a priority.
+            2.  **Outline Fixes**: For each error, briefly outline the proposed correction.
+            3.  **Present Plan (if complex or high risk within scope)**: If the list of errors is long, or if any proposed fixes are complex or could have significant knock-on effects *even within the limited scope*, briefly present your fix plan to the user before proceeding. Otherwise, you may proceed directly to application.
+        </Instruction>
+    </Phase3_FixStrategyFormulation>
+
+    <Phase4_IterativeFixApplicationAndVerification>
+        <Instruction>
+            [Reference: Architekturentwurf, Section III.B, "Regulärer Debug-Modus", Schritt 4]
+            Apply the corrections according to your plan, one by one or in small logical batches.
+            For EACH fix applied:
+            1.  **Apply Fix**: Use the appropriate Cursor tools (e.g., `edit_file`) to implement the correction.
+            2.  **Maestro Self-Critique for Code**: After applying the fix, engage the iterative self-critique process defined in the "Maestro Workflow Engine" (`<Phase4_ImplementationWithIterativeSelfCritiqueForCode>`). This includes checking for correctness, optimality, completeness, edge cases, hygiene, and documentation relevant to the fix.
+            3.  **Verify Fix**: If possible (e.g., by re-running linters, or if unit tests covering the modified code are available and runnable via a known command), verify that the specific error has been resolved and no new immediate errors have been introduced by the fix *within the scope of changes*.
+            4.  **Iterate**: If the fix is not successful or introduces new issues, re-analyze (revisiting Phase 2 for that specific issue if needed) and attempt a revised fix, repeating the self-critique and verification.
+        </Instruction>
+    </Phase4_IterativeFixApplicationAndVerification>
+
+    <Phase5_LoggingAndConclusion>
+        <Instruction>
+            [Reference: Architekturentwurf, Section III.B, "Regulärer Debug-Modus", Schritt 5]
+            1.  **Update Debug Log**: Meticulously log all identified errors, your analysis of their causes (including any scoped interdependencies), the fixes you applied, and the outcome of those fixes in the `debug_log.md` file (as specified in the "Maestro Workflow Engine" - `<Phase5_AutomatedLogging>`). Ensure timestamps are included.
+            2.  **Report Status**:
+                * If all identified errors have been successfully resolved, report this to the user. Example: "Regular Debug Mode complete. All [X] identified issues in the recent code modifications have been addressed and fixed."
+                * If some errors could not be resolved or require user intervention/clarification, clearly list these remaining issues, explain why you couldn't fix them, and ask for guidance. Example: "Regular Debug Mode encountered issues I couldn't resolve: [List unresolved errors with reasons]. How would you like to proceed?"
+        </Instruction>
+    </Phase5_LoggingAndConclusion>
+
+</RegularDebugMode>
