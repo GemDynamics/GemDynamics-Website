@@ -605,8 +605,8 @@ export default function DynamicPersonalityPage() {
                 </div>
             </footer>
 
-            {/* CSS Animations */}
-            <style>
+            {/* CSS Animations Commented out */}
+            {/* <style>
                 {`
         @keyframes fadeIn {
           0% { opacity: 0; transform: translateY(10px); }
@@ -637,7 +637,7 @@ export default function DynamicPersonalityPage() {
           animation-delay: 900ms;
         }
         `}
-            </style>
+            </style> */}
         </div>
     );
 }
